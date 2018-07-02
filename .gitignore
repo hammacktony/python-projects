@@ -2,3 +2,5 @@ heroku/
 heroku_daemon/
 matlab/
 daily/
+__pycache__/
+node_modules/
