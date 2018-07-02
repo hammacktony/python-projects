@@ -21,33 +21,13 @@ FILENAME = 'data/volcanos.csv'
 SAVENAME = 'data/volcanos.json'
 MAPNAME = 'volcanos.html'
 
-
-def get_data(URL,FILENAME):
-	'''
-	Loads data from url and saves it into a csv file.
-	'''
-	res = requests.get(URL)
-	soup = BeautifulSoup(res.content,'lxml')
-	table = soup.find_all('table')[2] 
-	df = pd.read_html(str(table))
-	out = df[0].to_csv()
-	with open(FILENAME, 'w') as f:
-		f.write(out)
-
 def get_data(FILENAME):
 	'''
 	Gets data into data frame
 	'''
 	data = pd.read_csv(FILENAME)
-	data = data.drop(columns='Index',axis=1)
+	data = data.drop(['Index'],axis=1)
 	return data
-
-def save_data(SAVENAME):
-	'''
-	Saves data to json
-	'''
-	df.to_json(path_or_buf=SAVENAME,orient='records')
-
 
 def create_map(df):
 	'''
@@ -288,8 +268,7 @@ def create_dfUnknown(df):
 			fgUnknown.add_child(folium.Marker(location=[lt,ln],popup=folium.Popup(str(nm),parse_html=True),icon=folium.Icon(color='green')))
 	return fgUnknown
 
-
-if __name__ == '__main__':
+def construct_map(FILENAME,MAPNAME):
 	# Get dataframe
 	df = get_data(FILENAME)
 	# Creates the map object centered in the moddle of the Atlantic
@@ -311,4 +290,7 @@ if __name__ == '__main__':
 	map.add_child(folium.LayerControl())
 	# Saves map file
 	map.save(MAPNAME)
-	
+
+if __name__ == '__main__':
+	construct_map(FILENAME,MAPNAME)	
+
