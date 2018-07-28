@@ -1,4 +1,4 @@
-Index,Number,Name,Country,Region,Latitude,Longitude,Elev,Type,Status,Last KnownEruption
+Index,Number,Volcano Name,Country,Region,Latitude,Longitude,Elev,Type,Status,Last KnownEruption
 1,0803-001,Abu,Japan,Honshu-Japan,34.5,131.6,571,Shield volcano,Holocene,Unknown
 2,1505-096,Acamarachi,Chile,Chile-N,-23.3,-67.62,6046,Stratovolcano,Holocene,Unknown
 3,1402-08=,Acatenango,Guatemala,Guatemala,14.501,-90.876,3976,Stratovolcano,Historical,D1
